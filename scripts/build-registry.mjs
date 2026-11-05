@@ -105,35 +105,70 @@ const hookItems = Object.entries(HOOKS).map(([name, spec]) => ({
 }));
 
 const UI = {
+  accordion: {
+    description: 'Stacked sections that open and close: bold headings between heavy rules, a plus that turns to a minus when open.',
+    deps: ['@base-ui/react', 'lucide-react'],
+  },
   alert: {
     description: 'A service-status notice: good service, delays, planned work or suspended, with an icon on a tile of its colour.',
     deps: ['class-variance-authority'],
   },
   arrow: { description: 'The signage arrow, in eight directions.', deps: [] },
+  'aspect-ratio': { description: 'Holds its content to a fixed shape, such as 16:9, whatever the width.', deps: [] },
+  avatar: {
+    description:
+      'A person in a circle, like a route bullet: their photo, or bold initials until it loads, with an optional status dot and stacked groups.',
+    deps: ['@base-ui/react'],
+  },
   badge: { description: 'A small square label, in black, white or a status colour.', deps: ['@base-ui/react', 'class-variance-authority'] },
+  breadcrumb: {
+    description: 'Where this page sits: the steps before in grey, the current page in bold, with signage arrows between.',
+    deps: ['@base-ui/react', 'lucide-react'],
+    ui: ['arrow'],
+  },
   button: {
     description:
       'Square buttons: a primary panel (white on the dark ground, black on the light wall), secondary, outline, ghost, destructive and link.',
     deps: ['@base-ui/react', 'class-variance-authority'],
   },
   card: { description: 'A square panel with header, title, description, content and footer; the header can be a sign band.', deps: [] },
+  collapsible: { description: 'An unstyled section that shows and hides behind a trigger.', deps: ['@base-ui/react'] },
   dialog: {
     description: 'A modal on a black panel with the sign’s white rule along its top.',
     deps: ['@base-ui/react', 'lucide-react'],
     ui: ['button'],
+  },
+  empty: {
+    description: 'Nothing here yet: a dashed frame with an icon on a white tile, a bold title, a line of explanation and what to do next.',
+    deps: ['class-variance-authority'],
   },
   field: {
     description: 'Labels, controls, help text and errors composed into form fields; takes errors from any form library.',
     deps: ['class-variance-authority'],
     ui: ['label'],
   },
+  input: { description: 'A square text box: a black well whose edge turns white on focus.', deps: ['@base-ui/react'] },
   'input-group': {
     description: 'An input with icons, units or buttons attached, in one black box.',
     deps: ['@base-ui/react', 'class-variance-authority'],
     ui: ['button'],
   },
-  input: { description: 'A square text box: a black well whose edge turns white on focus.', deps: ['@base-ui/react'] },
+  item: {
+    description: 'A row in a list: media, a bold title and description, and actions; it can be a link, or sit in a black panel.',
+    deps: ['@base-ui/react', 'class-variance-authority'],
+    ui: ['separator'],
+  },
+  kbd: { description: 'A keyboard key as a small square in monospace type, alone or grouped into a shortcut.', deps: [] },
   label: { description: 'A bold form label.', deps: [] },
+  'navigation-menu': {
+    description: 'Site navigation: bold triggers that open a black panel of links, with the open trigger lit.',
+    deps: ['@base-ui/react', 'class-variance-authority', 'lucide-react'],
+  },
+  pagination: {
+    description: 'Previous, numbered pages and next, with the current page a lit panel.',
+    deps: ['lucide-react'],
+    ui: ['button'],
+  },
   popover: { description: 'Content in a black panel, anchored to its trigger.', deps: ['@base-ui/react'] },
   'route-bullet': {
     description: 'A coloured circle with a route letter or number, or a diamond for express service. Name a route and its colour follows.',
@@ -144,6 +179,8 @@ const UI = {
     description: 'The sign band: white type on black under a thin white rule, with route bullets and an arrow beside the words.',
     deps: ['class-variance-authority'],
   },
+  skeleton: { description: 'A flat grey block that pulses where content will load, on the dark ground or the white wall.', deps: [] },
+  spinner: { description: 'A ring of square ticks that steps round like a station clock.', deps: [] },
   'strip-map': {
     description:
       'The line diagram from inside the train, as a stepper or timeline: stops on a line in its route colour, with passed stops gone dark.',
