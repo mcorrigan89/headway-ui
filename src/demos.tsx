@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 
 import { Arrow, type Direction } from '@/components/ui/arrow';
+import { Button } from '@/components/ui/button';
 import { RouteBullet } from '@/components/ui/route-bullet';
 
 // One demo per registry item, keyed by item name. Items without one show
@@ -108,8 +109,37 @@ function ArrowDemo() {
   );
 }
 
+function ButtonDemo() {
+  return (
+    <div className="flex flex-col gap-6">
+      <div className="flex flex-wrap items-center gap-3">
+        <Button>Plan a trip</Button>
+        <Button variant="secondary">Service status</Button>
+        <Button variant="outline">Maps</Button>
+        <Button variant="ghost">Accessibility</Button>
+        <Button variant="destructive">Cancel alert</Button>
+        <Button variant="link">Fares</Button>
+      </div>
+      <div className="flex flex-wrap items-center gap-3">
+        <Button size="xs">Extra small</Button>
+        <Button size="sm">Small</Button>
+        <Button>Default</Button>
+        <Button size="lg">
+          Next train
+          <Arrow data-icon="inline-end" />
+        </Button>
+        <Button size="icon" variant="outline" aria-label="Next">
+          <Arrow />
+        </Button>
+        <Button disabled>Disabled</Button>
+      </div>
+    </div>
+  );
+}
+
 export const DEMOS: Record<string, () => ReactNode> = {
   theme: ThemeDemo,
   arrow: ArrowDemo,
+  button: ButtonDemo,
   'route-bullet': RouteBulletDemo,
 };
