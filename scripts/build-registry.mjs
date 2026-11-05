@@ -74,7 +74,12 @@ const utils = {
 // ── base components ────────────────────────────────────────────────────────
 // name → { description, deps (npm), ui (other registry items it imports) }
 const UI = {
+  alert: {
+    description: 'A service-status notice: good service, delays, planned work or suspended, with an icon on a tile of its colour.',
+    deps: ['class-variance-authority'],
+  },
   arrow: { description: 'The signage arrow, in eight directions.', deps: [] },
+  badge: { description: 'A small square label, in black, white or a status colour.', deps: ['@base-ui/react', 'class-variance-authority'] },
   button: {
     description: 'Square buttons: a white primary, a black sign band, outline, ghost, destructive and link.',
     deps: ['@base-ui/react', 'class-variance-authority'],

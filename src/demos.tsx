@@ -1,6 +1,9 @@
 import type { ReactNode } from 'react';
+import { CircleCheck, Construction, OctagonX, TriangleAlert, X } from 'lucide-react';
 
+import { Alert, AlertAction, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Arrow, type Direction } from '@/components/ui/arrow';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { RouteBullet } from '@/components/ui/route-bullet';
@@ -209,9 +212,81 @@ function CardDemo() {
   );
 }
 
+function BadgeDemo() {
+  return (
+    <div className="flex flex-wrap items-center gap-2">
+      <Badge>New</Badge>
+      <Badge variant="secondary">Local</Badge>
+      <Badge variant="outline">Express</Badge>
+      <Badge variant="ok">Good service</Badge>
+      <Badge variant="warning">Delays</Badge>
+      <Badge variant="destructive">Suspended</Badge>
+      <Badge variant="info">Planned work</Badge>
+    </div>
+  );
+}
+
+function AlertDemo() {
+  return (
+    <div className="flex max-w-2xl flex-col gap-3">
+      <Alert variant="ok">
+        <CircleCheck />
+        <AlertTitle>
+          <RouteBullet route="1" size="sm" />
+          <RouteBullet route="2" size="sm" />
+          <RouteBullet route="3" size="sm" />
+          Good service
+        </AlertTitle>
+        <AlertDescription>Trains are running on or close to schedule.</AlertDescription>
+      </Alert>
+      <Alert variant="warning">
+        <TriangleAlert />
+        <AlertTitle>
+          <RouteBullet route="N" size="sm" />
+          <RouteBullet route="Q" size="sm" />
+          Delays
+        </AlertTitle>
+        <AlertDescription>Northbound trains are delayed while we address a signal problem at Canal St.</AlertDescription>
+        <AlertAction>
+          <Button size="icon-sm" variant="ghost" aria-label="Dismiss">
+            <X />
+          </Button>
+        </AlertAction>
+      </Alert>
+      <Alert variant="info">
+        <Construction />
+        <AlertTitle>
+          <RouteBullet route="7" size="sm" />
+          Planned work
+        </AlertTitle>
+        <AlertDescription>
+          <p>No trains between 74 St–Broadway and Flushing–Main St, Sat and Sun.</p>
+          <p>
+            Take the <a href="#route-bullet">free shuttle bus</a> instead.
+          </p>
+        </AlertDescription>
+      </Alert>
+      <Alert variant="destructive">
+        <OctagonX />
+        <AlertTitle>
+          <RouteBullet route="G" size="sm" />
+          Suspended
+        </AlertTitle>
+        <AlertDescription>No service between Court Sq and Nassau Av.</AlertDescription>
+      </Alert>
+      <Alert>
+        <CircleCheck />
+        <AlertTitle>Your trip is saved</AlertTitle>
+      </Alert>
+    </div>
+  );
+}
+
 export const DEMOS: Record<string, () => ReactNode> = {
   theme: ThemeDemo,
+  alert: AlertDemo,
   arrow: ArrowDemo,
+  badge: BadgeDemo,
   button: ButtonDemo,
   card: CardDemo,
   sign: SignDemo,
