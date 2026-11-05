@@ -23,6 +23,7 @@ function DatePicker({
   disabled,
   className,
   calendar,
+  'aria-label': ariaLabel,
   ...props
 }: Omit<React.ComponentProps<'button'>, 'value' | 'defaultValue' | 'onChange'> & {
   value?: Date | undefined;
@@ -45,6 +46,8 @@ function DatePicker({
           className,
         )}
         {...props}
+        // an aria-label names the field; the name keeps what's shown after it (WCAG 2.5.3)
+        aria-label={ariaLabel ? `${ariaLabel}: ${value ? format(value) : placeholder}` : undefined}
       >
         <span className="truncate">{value ? format(value) : placeholder}</span>
         <CalendarIcon className="shrink-0 text-sign-foreground" />
