@@ -3,8 +3,9 @@ import axe from 'axe-core';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { DEMOS } from '@/docs/demos';
+import { ExampleApp } from '@/docs/example-app/app';
 
-// Every demo through axe's WCAG 2.2 A/AA rules.
+// Every demo, and the sample app's pages, through axe's WCAG 2.2 A/AA rules.
 // jsdom has no layout, so colour contrast (tests/contrast.test.ts holds the
 // palette to AA) and anything needing real geometry are left to a browser
 // audit; this catches the structural failures: names, roles, labels, nesting.
@@ -66,6 +67,15 @@ describe('accessibility (axe, WCAG 2.2 A/AA)', () => {
     if (SKIP.has(name)) continue;
     it(`${name} demo`, async () => {
       const { container } = render(<Demo />);
+      await act(async () => {});
+      expect(await violations(container)).toEqual([]);
+    });
+  }
+
+  for (const hash of ['#/', '#/lines/a', '#/lines/g', '#/alerts', '#/planned', '#/people']) {
+    it(`sample app ${hash}`, async () => {
+      location.hash = hash;
+      const { container } = render(<ExampleApp />);
       await act(async () => {});
       expect(await violations(container)).toEqual([]);
     });
