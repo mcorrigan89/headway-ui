@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RouteBullet } from '@/components/ui/route-bullet';
 import { Sign, SignContent, SignDescription, SignRoutes, SignTitle } from '@/components/ui/sign';
+import { StripMap } from '@/components/ui/strip-map';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
@@ -430,6 +431,52 @@ function TableDemo() {
   );
 }
 
+function StripMapDemo() {
+  return (
+    <div className="flex flex-col gap-12">
+      <StripMap
+        route="F"
+        current={2}
+        aria-label="F train, Brooklyn-bound"
+        stops={[
+          { label: '14 St', transfers: <RouteBullet route="L" size="sm" /> },
+          { label: 'W 4 St', transfers: <RouteBullet route="A" size="sm" /> },
+          { label: 'Broadway–Lafayette' },
+          { label: '2 Av' },
+          { label: 'Delancey St', transfers: <RouteBullet route="J" size="sm" /> },
+          { label: 'East Broadway' },
+          { label: 'York St' },
+        ]}
+      />
+      <div className="grid gap-12 md:grid-cols-2">
+        <StripMap
+          color="blue"
+          current={1}
+          orientation="vertical"
+          aria-label="Application steps"
+          stops={[
+            { label: 'Your details', description: 'Name and email' },
+            { label: 'Reduced fare', description: 'Choose the program you qualify for' },
+            { label: 'Upload proof', description: 'Photo ID or benefits letter' },
+            { label: 'Review and send' },
+          ]}
+        />
+        <StripMap
+          route="7"
+          orientation="vertical"
+          aria-label="7 train stops"
+          stops={[
+            { label: 'Hudson Yards' },
+            { label: 'Times Sq–42 St' },
+            { label: 'Grand Central–42 St' },
+            { label: 'Vernon Blvd–Jackson Av' },
+          ]}
+        />
+      </div>
+    </div>
+  );
+}
+
 export const DEMOS: Record<string, () => ReactNode> = {
   theme: ThemeDemo,
   alert: AlertDemo,
@@ -441,6 +488,7 @@ export const DEMOS: Record<string, () => ReactNode> = {
   input: InputDemo,
   label: LabelDemo,
   sign: SignDemo,
+  'strip-map': StripMapDemo,
   table: TableDemo,
   tabs: TabsDemo,
   'route-bullet': RouteBulletDemo,
