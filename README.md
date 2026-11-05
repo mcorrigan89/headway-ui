@@ -28,6 +28,23 @@ style are borrowed; no MTA marks are used.
   resizable, scroll-area, select, separator, sheet, skeleton, slider, sonner
   (toasts), spinner, switch, table, tabs, textarea, toggle, toggle-group and
   tooltip.
+- Pieces for working apps, ported from GovWell UI (same APIs) and restyled as
+  signage:
+  - actions and forms: link, segmented-control, toolbar, copy-button,
+    download-link, number-input, date-range-picker, time-input, file-upload;
+  - navigation and overlays: steps, key-hints, quick-tip, confirm-dialog,
+    spotlight (guided tours), lightbox;
+  - feedback: banner (a service-change notice band, with route bullets),
+    query-state, busy-hold, error-page (a station sign reading "404 · Not found");
+  - data: tone-badge, deadline, relative-time, readout, meter, distribution,
+    event-log, description-list, highlight, markdown, tree;
+  - layout: page-header, tile, settings-section; and the `use-hotkeys` hook.
+- Blocks (installed to `components/blocks/`): app-shell (a black sign-column
+  sidebar), data-table (sort, filter, page, select, reorder), user-menu and
+  week-calendar.
+
+The registry and the preview are grouped into categories (wayfinding, actions,
+forms, navigation, overlays, feedback, display, data, layout, blocks).
 
 ## Using it
 

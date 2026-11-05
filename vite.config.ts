@@ -16,6 +16,7 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: /^@\/components\/ui\//, replacement: at('./registry/headway/ui/') },
+      { find: /^@\/components\/blocks\//, replacement: at('./registry/headway/blocks/') },
       { find: /^@\/lib\//, replacement: at('./registry/headway/lib/') },
       { find: /^@\/hooks\//, replacement: at('./registry/headway/hooks/') },
       { find: /^@\/docs\//, replacement: at('./src/') },
