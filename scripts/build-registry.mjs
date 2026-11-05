@@ -131,7 +131,16 @@ const UI = {
       'Square buttons: a primary panel (white on the dark ground, black on the light wall), secondary, outline, ghost, destructive and link.',
     deps: ['@base-ui/react', 'class-variance-authority'],
   },
+  'button-group': {
+    description: 'Buttons, inputs and selects butted together into one square strip, with text plates and separators.',
+    deps: ['@base-ui/react', 'class-variance-authority'],
+    ui: ['separator'],
+  },
   card: { description: 'A square panel with header, title, description, content and footer; the header can be a sign band.', deps: [] },
+  checkbox: {
+    description: 'A square box with a heavy edge that fills solid, with the tick knocked out, when checked.',
+    deps: ['@base-ui/react', 'lucide-react'],
+  },
   collapsible: { description: 'An unstyled section that shows and hides behind a trigger.', deps: ['@base-ui/react'] },
   dialog: {
     description: 'A modal on a black panel with the sign’s white rule along its top.',
@@ -153,6 +162,10 @@ const UI = {
     deps: ['@base-ui/react', 'class-variance-authority'],
     ui: ['button'],
   },
+  'input-otp': {
+    description: 'A one-time code entered one character per black box, in groups.',
+    deps: ['@base-ui/react', 'lucide-react'],
+  },
   item: {
     description: 'A row in a list: media, a bold title and description, and actions; it can be a link, or sit in a black panel.',
     deps: ['@base-ui/react', 'class-variance-authority'],
@@ -160,6 +173,10 @@ const UI = {
   },
   kbd: { description: 'A keyboard key as a small square in monospace type, alone or grouped into a shortcut.', deps: [] },
   label: { description: 'A bold form label.', deps: [] },
+  'native-select': {
+    description: 'The browser’s own select in a black box, for long lists, phones and forms that work without JavaScript.',
+    deps: ['lucide-react'],
+  },
   'navigation-menu': {
     description: 'Site navigation: bold triggers that open a black panel of links, with the open trigger lit.',
     deps: ['@base-ui/react', 'class-variance-authority', 'lucide-react'],
@@ -170,9 +187,17 @@ const UI = {
     ui: ['button'],
   },
   popover: { description: 'Content in a black panel, anchored to its trigger.', deps: ['@base-ui/react'] },
+  'radio-group': {
+    description: 'A set of round options, one chosen at a time, the chosen one marked with a solid dot.',
+    deps: ['@base-ui/react'],
+  },
   'route-bullet': {
     description: 'A coloured circle with a route letter or number, or a diamond for express service. Name a route and its colour follows.',
     deps: ['class-variance-authority'],
+  },
+  select: {
+    description: 'A black box that opens a list of options in a black panel, the chosen one ticked.',
+    deps: ['@base-ui/react', 'lucide-react'],
   },
   separator: { description: 'A hairline rule, across or down.', deps: ['@base-ui/react'] },
   sign: {
@@ -180,6 +205,10 @@ const UI = {
     deps: ['class-variance-authority'],
   },
   skeleton: { description: 'A flat grey block that pulses where content will load, on the dark ground or the white wall.', deps: [] },
+  slider: {
+    description: 'A flat track with the chosen range drawn solid and square thumbs; one value or a range.',
+    deps: ['@base-ui/react'],
+  },
   spinner: { description: 'A ring of square ticks that steps round like a station clock.', deps: [] },
   'strip-map': {
     description:
@@ -187,10 +216,24 @@ const UI = {
     deps: [],
     ui: ['route-bullet'],
   },
+  switch: {
+    description: 'A square rocker: a hollow box when off, a solid one with the block slid across when on.',
+    deps: ['@base-ui/react'],
+  },
   table: { description: 'A plain, dense table with a black header band and tabular numbers.', deps: [] },
   tabs: {
     description: 'Tabs on a black band with the chosen one lit white, or a quieter line under the chosen tab.',
     deps: ['@base-ui/react', 'class-variance-authority'],
+  },
+  textarea: { description: 'A multi-line text box, black in either mode, that grows with its text.', deps: [] },
+  toggle: {
+    description: 'A button that stays pressed in, shown as a solid panel, until pressed again.',
+    deps: ['@base-ui/react', 'class-variance-authority'],
+  },
+  'toggle-group': {
+    description: 'A row of toggles, one or several pressed, spaced apart or butted into one strip.',
+    deps: ['@base-ui/react', 'class-variance-authority'],
+    ui: ['toggle'],
   },
 };
 const uiItems = Object.entries(UI).map(([name, spec]) => ({
