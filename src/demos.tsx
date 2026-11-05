@@ -1,5 +1,8 @@
 import type { ReactNode } from 'react';
 
+import { Arrow, type Direction } from '@/components/ui/arrow';
+import { RouteBullet } from '@/components/ui/route-bullet';
+
 // One demo per registry item, keyed by item name. Items without one show
 // their description only.
 
@@ -61,6 +64,52 @@ function ThemeDemo() {
   );
 }
 
+const ROUTES = ['A', 'C', 'E', 'B', 'D', 'F', 'M', 'G', 'J', 'Z', 'L', 'N', 'Q', 'R', 'W', '1', '2', '3', '4', '5', '6', '7', 'S'];
+const DIRECTIONS: Direction[] = ['up', 'up-right', 'right', 'down-right', 'down', 'down-left', 'left', 'up-left'];
+
+function RouteBulletDemo() {
+  return (
+    <div className="flex flex-col gap-6">
+      <div className="flex flex-wrap gap-2">
+        {ROUTES.map((r) => (
+          <RouteBullet key={r} route={r} />
+        ))}
+      </div>
+      <div className="flex items-center gap-4">
+        <RouteBullet route="Q" size="sm" />
+        <RouteBullet route="Q" />
+        <RouteBullet route="Q" size="lg" />
+        <RouteBullet route="Q" size="xl" />
+      </div>
+      <div className="flex items-center gap-4">
+        <RouteBullet route="6" size="lg" express />
+        <RouteBullet route="7" size="lg" express />
+        <RouteBullet color="lime" size="lg">
+          1
+        </RouteBullet>
+      </div>
+    </div>
+  );
+}
+
+function ArrowDemo() {
+  return (
+    <div className="flex flex-col gap-6">
+      <div className="flex flex-wrap gap-4">
+        {DIRECTIONS.map((d) => (
+          <Arrow key={d} direction={d} className="size-10" />
+        ))}
+      </div>
+      <div className="sign flex w-fit items-center gap-3 px-4 py-3 text-xl">
+        <Arrow direction="up-left" className="size-8" />
+        Exit
+      </div>
+    </div>
+  );
+}
+
 export const DEMOS: Record<string, () => ReactNode> = {
   theme: ThemeDemo,
+  arrow: ArrowDemo,
+  'route-bullet': RouteBulletDemo,
 };
