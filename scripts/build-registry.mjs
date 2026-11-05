@@ -85,6 +85,13 @@ const UI = {
     deps: ['@base-ui/react', 'class-variance-authority'],
   },
   card: { description: 'A square panel with header, title, description, content and footer; the header can be a sign band.', deps: [] },
+  field: {
+    description: 'Labels, controls, help text and errors composed into form fields; takes errors from any form library.',
+    deps: ['class-variance-authority'],
+    ui: ['label'],
+  },
+  input: { description: 'A square text box: a black well whose edge turns white on focus.', deps: ['@base-ui/react'] },
+  label: { description: 'A bold form label.', deps: [] },
   'route-bullet': {
     description: 'A coloured circle with a route letter or number, or a diamond for express service. Name a route and its colour follows.',
     deps: ['class-variance-authority'],

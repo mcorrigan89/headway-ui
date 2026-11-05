@@ -58,6 +58,8 @@ export const PALETTE = {
   'destructive-foreground': '#ffffff',
   info: '#0039a6',
   'info-foreground': '#ffffff',
+  // red as text (form errors): the fill red is too dark to read on the ground
+  error: '#ff6e61',
   ...LINES,
   radius: '0rem',
 };
@@ -80,6 +82,9 @@ export const TEXT_PAIRS = [
   ['warning-foreground', 'warning'],
   ['destructive-foreground', 'destructive'],
   ['info-foreground', 'info'],
+  ['error', 'background'],
+  ['error', 'card'],
+  ['error', 'muted'],
 ];
 
 // WCAG relative luminance and contrast ratio, for hex colours
