@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils';
 //     <RouteBullet route="4" /> <RouteBullet route="5" />
 //   </Sign>
 
-const signVariants = cva('sign flex w-full items-center [&>[data-slot=arrow]]:h-[1.25em] [&>[data-slot=arrow]]:w-[1.25em]', {
+const signVariants = cva('sign on-sign flex w-full items-center [&>[data-slot=arrow]]:h-[1.25em] [&>[data-slot=arrow]]:w-[1.25em]', {
   variants: {
     size: {
       sm: 'gap-2 px-3 pb-2 text-base',

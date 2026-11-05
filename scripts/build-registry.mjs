@@ -5,7 +5,7 @@
 import { execFileSync } from 'node:child_process';
 import { existsSync, writeFileSync } from 'node:fs';
 import { themeCss } from './theme-css.mjs';
-import { PALETTE } from './palette.mjs';
+import { LIGHT, PALETTE, PANEL } from './palette.mjs';
 
 const BASE = (process.env.REGISTRY_URL ?? 'http://localhost:5173').replace(/\/+$/, '');
 const url = (name) => `${BASE}/r/${name}.json`;
@@ -13,13 +13,16 @@ const url = (name) => `${BASE}/r/${name}.json`;
 const THEME = url('theme');
 const UTILS = url('utils');
 
+// a palette as custom properties, for plain CSS rules
+const vars = (palette) => Object.fromEntries(Object.entries(palette).map(([k, v]) => [`--${k}`, v]));
+
 // ── the theme: tokens, fonts, utilities ───────────────────────────────────
 const theme = {
   name: 'theme',
   type: 'registry:theme',
   title: 'Headway theme',
   description:
-    'The palette, type and utilities everything else uses: white type on black sign bands over a charcoal ground, the ten route colours, and status colours drawn from them. Square corners throughout.',
+    'The palette, type and utilities everything else uses: white type on black sign bands, over a charcoal ground in dark mode or a white wall in light, with the ten route colours and status colours drawn from them. Square corners throughout.',
   dependencies: ['@fontsource-variable/inter', 'tw-animate-css', 'shadcn'],
   cssVars: {
     theme: {
@@ -28,7 +31,8 @@ const theme = {
       'font-sans': "'Helvetica Neue', Helvetica, 'Inter Variable', Arial, sans-serif",
       'font-mono': "ui-monospace, 'SF Mono', Menlo, Consolas, monospace",
     },
-    // dark only for now: the same palette either way
+    // shadcn writes these to :root; light mode is a data-mode attribute
+    // (below), so both are the dark palette
     light: PALETTE,
     dark: PALETTE,
   },
@@ -37,6 +41,12 @@ const theme = {
     '@import "shadcn/tailwind.css"': {},
     '@import "@fontsource-variable/inter"': {},
     ':root': { 'color-scheme': 'dark' },
+    // dark is the default; data-mode="light" on <html> pins light, and
+    // data-mode="system" follows the OS
+    ':root[data-mode="light"]': { 'color-scheme': 'light', ...vars(LIGHT) },
+    '@media (prefers-color-scheme: light)': {
+      ':root[data-mode="system"]': { 'color-scheme': 'light', ...vars(LIGHT) },
+    },
     '@layer base': {
       '*': { '@apply border-border outline-ring/50': {} },
       body: { '@apply bg-background text-foreground antialiased': {} },
@@ -50,6 +60,10 @@ const theme = {
       'letter-spacing': '-0.01em',
       'line-height': '1.15',
     },
+    // a black panel that carries text: inside it, text, controls and the
+    // focus ring take the dark palette's colours in either mode. Cards,
+    // alerts, tables and the tab bar use it.
+    '@utility on-sign': { ...vars(PANEL), color: 'var(--foreground)' },
     // the thin white rule just inside the top edge of a sign. Padding makes
     // room so content never touches it.
     '@utility sign-rule': {
@@ -73,6 +87,21 @@ const utils = {
 
 // ── base components ────────────────────────────────────────────────────────
 // name → { description, deps (npm), ui (other registry items it imports) }
+// ── hooks ──────────────────────────────────────────────────────────────────
+const HOOKS = {
+  'use-color-mode': {
+    title: 'useColorMode',
+    description: 'Dark (the default), light, or follow the OS, on <html data-mode>, remembered between visits.',
+  },
+};
+const hookItems = Object.entries(HOOKS).map(([name, spec]) => ({
+  name,
+  type: 'registry:hook',
+  title: spec.title,
+  description: spec.description,
+  files: [{ path: `registry/headway/hooks/${name}.ts`, type: 'registry:hook' }],
+}));
+
 const UI = {
   alert: {
     description: 'A service-status notice: good service, delays, planned work or suspended, with an icon on a tile of its colour.',
@@ -81,7 +110,8 @@ const UI = {
   arrow: { description: 'The signage arrow, in eight directions.', deps: [] },
   badge: { description: 'A small square label, in black, white or a status colour.', deps: ['@base-ui/react', 'class-variance-authority'] },
   button: {
-    description: 'Square buttons: a white primary, a black sign band, outline, ghost, destructive and link.',
+    description:
+      'Square buttons: a primary panel (white on the dark ground, black on the light wall), secondary, outline, ghost, destructive and link.',
     deps: ['@base-ui/react', 'class-variance-authority'],
   },
   card: { description: 'A square panel with header, title, description, content and footer; the header can be a sign band.', deps: [] },
@@ -126,7 +156,7 @@ const registry = {
   $schema: 'https://ui.shadcn.com/schema/registry.json',
   name: 'headway',
   homepage: BASE,
-  items: [theme, utils, ...uiItems],
+  items: [theme, utils, ...hookItems, ...uiItems],
 };
 
 // every file an item names must exist

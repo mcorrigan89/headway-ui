@@ -34,7 +34,8 @@ export const PALETTE = {
   // a dark page
   primary: '#ffffff',
   'primary-foreground': '#111111',
-  secondary: '#2e2e2e',
+  // the secondary action is a black band
+  secondary: '#0b0b0b',
   'secondary-foreground': '#f5f5f5',
   muted: '#262626',
   'muted-foreground': '#a3a3a3',
@@ -64,6 +65,57 @@ export const PALETTE = {
   radius: '0rem',
 };
 
+// Light: a white wall, like station tile, with the signs still black. Cards,
+// popovers and primary buttons are black panels; inside the panels that
+// carry text (on-sign), PANEL puts back the dark colours, so a card reads the
+// same in either mode. Only what sits loose on the wall (labels, help text,
+// the line tabs) uses the dark-on-white colours here.
+export const LIGHT = {
+  ...PALETTE,
+  background: '#ffffff',
+  foreground: '#111111',
+  card: '#111111',
+  'card-foreground': '#f5f5f5',
+  popover: '#111111',
+  'popover-foreground': '#f5f5f5',
+  primary: '#111111',
+  'primary-foreground': '#ffffff',
+  secondary: '#e6e6e6',
+  'secondary-foreground': '#111111',
+  muted: '#f0f0f0',
+  'muted-foreground': '#555555',
+  accent: '#ebebeb',
+  'accent-foreground': '#111111',
+  border: '#d0d0d0',
+  input: '#333333',
+  // yellow vanishes on white: the ring on the wall is the A/C/E blue
+  ring: '#0039a6',
+  error: '#c8102e',
+};
+
+// what on-sign puts back inside a black panel: the dark palette's text,
+// controls and ring. Card and popover are left alone so each mode keeps its
+// own panel colour.
+const PANEL_KEYS = [
+  'background',
+  'foreground',
+  'card-foreground',
+  'popover-foreground',
+  'primary',
+  'primary-foreground',
+  'secondary',
+  'secondary-foreground',
+  'muted',
+  'muted-foreground',
+  'accent',
+  'accent-foreground',
+  'border',
+  'input',
+  'ring',
+  'error',
+];
+export const PANEL = Object.fromEntries(PANEL_KEYS.map((k) => [k, PALETTE[k]]));
+
 // text-on-surface pairs that must meet WCAG AA (4.5:1)
 export const TEXT_PAIRS = [
   ['foreground', 'background'],
@@ -84,6 +136,27 @@ export const TEXT_PAIRS = [
   ['info-foreground', 'info'],
   ['error', 'background'],
   ['error', 'card'],
+  ['error', 'muted'],
+];
+
+// light mode: what sits on the white wall, and the fills that carry text
+export const LIGHT_TEXT_PAIRS = [
+  ['foreground', 'background'],
+  ['foreground', 'muted'],
+  ['foreground', 'accent'],
+  ['muted-foreground', 'background'],
+  ['muted-foreground', 'muted'],
+  ['card-foreground', 'card'],
+  ['popover-foreground', 'popover'],
+  ['primary-foreground', 'primary'],
+  ['secondary-foreground', 'secondary'],
+  ['accent-foreground', 'accent'],
+  ['sign-foreground', 'sign'],
+  ['ok-foreground', 'ok'],
+  ['warning-foreground', 'warning'],
+  ['destructive-foreground', 'destructive'],
+  ['info-foreground', 'info'],
+  ['error', 'background'],
   ['error', 'muted'],
 ];
 

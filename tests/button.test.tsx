@@ -13,7 +13,7 @@ describe('Button', () => {
 
   it('applies its variant', () => {
     render(<Button variant="secondary">Status</Button>);
-    expect(screen.getByRole('button')).toHaveClass('bg-sign');
+    expect(screen.getByRole('button')).toHaveClass('bg-secondary');
   });
 
   it('does not click when disabled', async () => {

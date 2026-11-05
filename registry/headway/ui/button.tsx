@@ -10,8 +10,8 @@ const buttonVariants = cva(
       variant: {
         // a white panel with black type: the one thing to do on the page
         default: 'bg-primary text-primary-foreground hover:bg-primary/85',
-        // a black sign band
-        secondary: 'bg-sign text-sign-foreground hover:bg-accent aria-expanded:bg-accent',
+        // a black sign band in dark mode, light grey on the light wall
+        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary/80',
         outline: 'border-foreground bg-transparent text-foreground hover:bg-foreground hover:text-background aria-expanded:bg-accent',
         ghost: 'text-foreground hover:bg-accent aria-expanded:bg-accent',
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/85',

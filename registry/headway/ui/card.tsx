@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 
-// A square panel. Its header is plain by default; variant="sign" makes it a
+// A black panel on the light wall, a charcoal one on the dark ground. Its header is plain by default; variant="sign" makes it a
 // black sign band with the white rule.
 
 function Card({ className, ...props }: React.ComponentProps<'div'>) {
@@ -8,7 +8,7 @@ function Card({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       data-slot="card"
       className={cn(
-        'flex flex-col gap-5 border border-border bg-card pb-5 text-card-foreground has-[>[data-slot=card-footer]]:pb-0',
+        'on-sign flex flex-col gap-5 border border-border bg-card pb-5 text-card-foreground has-[>[data-slot=card-footer]]:pb-0',
         className,
       )}
       {...props}

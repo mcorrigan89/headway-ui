@@ -11,8 +11,9 @@ style are borrowed; no MTA marks are used.
 ## Items
 
 - `theme`: the palette (the ten route colours, status colours drawn from them,
-  surfaces), type, and the `sign` and `sign-rule` utilities. Dark only for now.
+  surfaces), type, and the `sign`, `sign-rule` and `on-sign` utilities.
 - `utils`: `cn()`.
+- `use-color-mode`: dark (the default), light, or follow the OS.
 - `route-bullet`: a coloured circle with a route letter or number, or an
   express diamond. `route="A"` picks the colour; `color="blue"` takes anything.
 - `arrow`: the signage arrow in eight directions.
@@ -42,6 +43,13 @@ Items pull in the items they build on.
 
 Type is Helvetica where the system has it, and Inter (installed with the theme)
 everywhere else.
+
+**Light mode.** Headway is dark by default. Set `data-mode="light"` on `<html>`
+for a white wall with the signs still black, or `data-mode="system"` to follow
+the OS; the `use-color-mode` hook does this and remembers the choice. In light
+mode, cards, alerts, tables, inputs and the tab bar are black panels. Put
+`on-sign` on your own black panels so text and controls inside them take the
+light-on-black colours in either mode.
 
 ## Working on it
 

@@ -4,12 +4,12 @@ import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-// A plain, dense table: a black header band, hairline rows and tabular
+// A plain, dense table on a panel: a black header band, hairline rows and tabular
 // numbers, so times and counts line up.
 
 function Table({ className, ...props }: React.ComponentProps<'table'>) {
   return (
-    <div data-slot="table-container" className="relative w-full overflow-x-auto">
+    <div data-slot="table-container" className="on-sign relative w-full overflow-x-auto bg-card text-foreground">
       <table data-slot="table" className={cn('w-full caption-bottom text-sm tabular-nums', className)} {...props} />
     </div>
   );
@@ -67,7 +67,7 @@ function TableCell({ className, ...props }: React.ComponentProps<'td'>) {
 }
 
 function TableCaption({ className, ...props }: React.ComponentProps<'caption'>) {
-  return <caption data-slot="table-caption" className={cn('mt-3 text-left text-sm text-muted-foreground', className)} {...props} />;
+  return <caption data-slot="table-caption" className={cn('px-3 py-3 text-left text-sm text-muted-foreground', className)} {...props} />;
 }
 
 export { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell, TableCaption };

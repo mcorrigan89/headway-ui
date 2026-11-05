@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 // colours still read on a dark ground.
 
 const alertVariants = cva(
-  'relative grid w-full gap-1 border border-border bg-card px-4 py-3.5 text-left text-sm has-data-[slot=alert-action]:pr-24 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-3.5 *:[svg]:row-span-2 *:[svg]:box-content *:[svg]:size-5 *:[svg]:p-1.5',
+  'on-sign relative grid w-full gap-1 border border-border bg-card px-4 py-3.5 text-left text-sm has-data-[slot=alert-action]:pr-24 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-3.5 *:[svg]:row-span-2 *:[svg]:box-content *:[svg]:size-5 *:[svg]:p-1.5',
   {
     variants: {
       variant: {
