@@ -30,7 +30,7 @@ pnpm verify       # install every item into a fresh app in .verify/ and build it
 - Line colours are identity and status, never body text. Text on a status fill uses its `*-foreground`; red text uses `error`.
 - **Registry sources** in `registry/headway/{ui,lib,hooks}` import each other only via consumer-style aliases (`@/components/ui/*`, `@/lib/*`, `@/hooks/*`), mapped back into `registry/` by `tsconfig.json` and `vite.config.ts`.
 - Components follow shadcn conventions on **Base UI** (`@base-ui/react`, not Radix): `data-slot` attributes, `cva` variants, `cn()`, composition via the `render` prop. Square corners (`rounded-none`) except bullets and dots; focus is `outline-3 outline-offset-2 outline-ring` (yellow).
-- **Preview** (`src/main.tsx`): one page rendering every item from `items.generated.json` with its demo from `DEMOS` in `src/demos.tsx`. Tests live in `tests/` (jsdom + Testing Library).
+- **Preview** (`src/main.tsx`): every item from `items.generated.json` with its demo from `DEMOS` in `src/demos.tsx`, grouped by the `CATEGORIES` in `scripts/build-registry.mjs` (`#/` all, `#/c/<category>` one group, `#/<name>` one item). Tests live in `tests/` (jsdom + Testing Library).
 
 ## Styling conventions
 
@@ -50,5 +50,6 @@ pnpm verify       # install every item into a fresh app in .verify/ and build it
 
 1. Put the source in `registry/headway/ui/`.
 2. Add it to `UI` in `scripts/build-registry.mjs` (npm deps and any `ui` registry deps).
-3. Add a demo to `DEMOS` in `src/demos.tsx` and a test in `tests/`.
-4. Run `pnpm verify`.
+3. Add its name to one of the `CATEGORIES` in the same file (the build fails if an item has no category). The preview groups its sidebar and pages by category; `#/c/<category>` shows one group.
+4. Add a demo to `DEMOS` in `src/demos.tsx` and a test in `tests/`.
+5. Run `pnpm verify`.
