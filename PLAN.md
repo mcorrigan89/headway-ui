@@ -49,28 +49,28 @@ Working name: **TBD** (see open questions). `<name>` below stands for it.
 
 The route palette (from the MTA's published line colours):
 
-| Token | Hex | Lines | Bullet text |
-|---|---|---|---|
-| `line-blue` | `#0039A6` | A C E | white |
-| `line-orange` | `#FF6319` | B D F M | white |
-| `line-lime` | `#6CBE45` | G | white |
-| `line-brown` | `#996633` | J Z | white |
-| `line-grey` | `#A7A9AC` | L | white |
-| `line-yellow` | `#FCCC0A` | N Q R W | **black** |
-| `line-red` | `#EE352E` | 1 2 3 | white |
-| `line-green` | `#00933C` | 4 5 6 | white |
-| `line-purple` | `#B933AD` | 7 | white |
-| `line-shuttle` | `#808183` | S | white |
+| Token          | Hex       | Lines   | Bullet text |
+| -------------- | --------- | ------- | ----------- |
+| `line-blue`    | `#0039A6` | A C E   | white       |
+| `line-orange`  | `#FF6319` | B D F M | white       |
+| `line-lime`    | `#6CBE45` | G       | white       |
+| `line-brown`   | `#996633` | J Z     | white       |
+| `line-grey`    | `#A7A9AC` | L       | white       |
+| `line-yellow`  | `#FCCC0A` | N Q R W | **black**   |
+| `line-red`     | `#EE352E` | 1 2 3   | white       |
+| `line-green`   | `#00933C` | 4 5 6   | white       |
+| `line-purple`  | `#B933AD` | 7       | white       |
+| `line-shuttle` | `#808183` | S       | white       |
 
 Semantic tokens map onto them, so components never hard-code a line:
 
-| Semantic | Source | Use |
-|---|---|---|
-| `ok` | green | Good service, success |
-| `warning` | yellow (black text) | Delays, caution |
-| `destructive` | red | Suspended, errors |
-| `info` | blue | Planned work, notices |
-| `primary` | white on sign-black | Main actions |
+| Semantic      | Source              | Use                   |
+| ------------- | ------------------- | --------------------- |
+| `ok`          | green               | Good service, success |
+| `warning`     | yellow (black text) | Delays, caution       |
+| `destructive` | red                 | Suspended, errors     |
+| `info`        | blue                | Planned work, notices |
+| `primary`     | white on sign-black | Main actions          |
 
 Surfaces: `sign` (near-black, tuned against photos of real signs), `ground`
 (page background), `rule` (the white line on top of a sign), plus a grey scale
@@ -127,21 +127,21 @@ All built shadcn-style on **Base UI** (`@base-ui/react`), as in Phosphor:
 `data-slot` attributes, `cva` variants, `cn()` from `@/lib/utils`, and
 composition through the `render` prop.
 
-| # | Item | Notes |
-|---|---|---|
-| 1 | `theme` | Tokens, fonts, utilities above |
-| 2 | `utils` | `cn()` |
-| 3 | `button` | Variants: primary (white on black), secondary (outline), line colour, ghost, destructive. Optional trailing arrow. |
-| 4 | `route-bullet` | Circle with a letter or number. Prop `line` (`A`, `7`, …) picks the colour automatically, or pass `color`. Sizes sm / md / lg. A diamond variant for express service. |
-| 5 | `sign` | The black band: title, optional bullets, optional arrow, top rule. The signature piece. |
-| 6 | `card` | A panel with an optional sign header |
-| 7 | `badge` | Small status pill using the semantic colours |
-| 8 | `alert` | Service-status style: Good service / Delays / Planned work / Suspended. Icon, title, body. |
-| 9 | `tabs` | Square tabs. The active one is a black band. |
-| 10 | `input`, `label`, `field` | Form controls with clear focus rings, labels and error states that work with any form library |
-| 11 | `table` | Plain, dense, with a black header row and tabular numbers |
-| 12 | `strip-map` | The line diagram from inside the train: a coloured line with stops. Used as a stepper / progress / timeline, with past, current and upcoming states. |
-| 13 | `arrow` | The manual's directional arrows in 8 directions, as an SVG component |
+| #   | Item                      | Notes                                                                                                                                                                 |
+| --- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | `theme`                   | Tokens, fonts, utilities above                                                                                                                                        |
+| 2   | `utils`                   | `cn()`                                                                                                                                                                |
+| 3   | `button`                  | Variants: primary (white on black), secondary (outline), line colour, ghost, destructive. Optional trailing arrow.                                                    |
+| 4   | `route-bullet`            | Circle with a letter or number. Prop `line` (`A`, `7`, …) picks the colour automatically, or pass `color`. Sizes sm / md / lg. A diamond variant for express service. |
+| 5   | `sign`                    | The black band: title, optional bullets, optional arrow, top rule. The signature piece.                                                                               |
+| 6   | `card`                    | A panel with an optional sign header                                                                                                                                  |
+| 7   | `badge`                   | Small status pill using the semantic colours                                                                                                                          |
+| 8   | `alert`                   | Service-status style: Good service / Delays / Planned work / Suspended. Icon, title, body.                                                                            |
+| 9   | `tabs`                    | Square tabs. The active one is a black band.                                                                                                                          |
+| 10  | `input`, `label`, `field` | Form controls with clear focus rings, labels and error states that work with any form library                                                                         |
+| 11  | `table`                   | Plain, dense, with a black header row and tabular numbers                                                                                                             |
+| 12  | `strip-map`               | The line diagram from inside the train: a coloured line with stops. Used as a stepper / progress / timeline, with past, current and upcoming states.                  |
+| 13  | `arrow`                   | The manual's directional arrows in 8 directions, as an SVG component                                                                                                  |
 
 Later candidates: select, checkbox, radio, switch, dialog, dropdown menu,
 tooltip, toast, breadcrumb, pagination, navigation menu.
