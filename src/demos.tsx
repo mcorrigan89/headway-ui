@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { RouteBullet } from '@/components/ui/route-bullet';
 import { Sign, SignContent, SignDescription, SignRoutes, SignTitle } from '@/components/ui/sign';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 // One demo per registry item, keyed by item name. Items without one show
 // their description only.
@@ -282,6 +283,50 @@ function AlertDemo() {
   );
 }
 
+function TabsDemo() {
+  return (
+    <div className="flex flex-col gap-10">
+      <Tabs defaultValue="subway">
+        <TabsList>
+          <TabsTrigger value="subway">Subway</TabsTrigger>
+          <TabsTrigger value="bus">Bus</TabsTrigger>
+          <TabsTrigger value="rail">Rail</TabsTrigger>
+          <TabsTrigger value="ferry" disabled>
+            Ferry
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="subway">Status for all subway lines.</TabsContent>
+        <TabsContent value="bus">Status for local, limited and Select Bus Service routes.</TabsContent>
+        <TabsContent value="rail">Status for commuter rail.</TabsContent>
+      </Tabs>
+      <Tabs defaultValue="uptown">
+        <TabsList variant="line">
+          <TabsTrigger value="uptown">
+            <Arrow direction="up" />
+            Uptown
+          </TabsTrigger>
+          <TabsTrigger value="downtown">
+            <Arrow direction="down" />
+            Downtown
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="uptown">Next uptown trains: 2 min, 7 min, 12 min.</TabsContent>
+        <TabsContent value="downtown">Next downtown trains: 4 min, 10 min.</TabsContent>
+      </Tabs>
+      <Tabs defaultValue="weekday" orientation="vertical" className="flex-row">
+        <TabsList variant="line">
+          <TabsTrigger value="weekday">Weekdays</TabsTrigger>
+          <TabsTrigger value="saturday">Saturday</TabsTrigger>
+          <TabsTrigger value="sunday">Sunday</TabsTrigger>
+        </TabsList>
+        <TabsContent value="weekday">Every 4 to 6 minutes from 6 am to 9 pm.</TabsContent>
+        <TabsContent value="saturday">Every 8 to 10 minutes.</TabsContent>
+        <TabsContent value="sunday">Every 10 to 12 minutes.</TabsContent>
+      </Tabs>
+    </div>
+  );
+}
+
 export const DEMOS: Record<string, () => ReactNode> = {
   theme: ThemeDemo,
   alert: AlertDemo,
@@ -290,5 +335,6 @@ export const DEMOS: Record<string, () => ReactNode> = {
   button: ButtonDemo,
   card: CardDemo,
   sign: SignDemo,
+  tabs: TabsDemo,
   'route-bullet': RouteBulletDemo,
 };
