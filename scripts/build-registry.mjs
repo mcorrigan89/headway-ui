@@ -79,8 +79,13 @@ const UI = {
     description: 'Square buttons: a white primary, a black sign band, outline, ghost, destructive and link.',
     deps: ['@base-ui/react', 'class-variance-authority'],
   },
+  card: { description: 'A square panel with header, title, description, content and footer; the header can be a sign band.', deps: [] },
   'route-bullet': {
     description: 'A coloured circle with a route letter or number, or a diamond for express service. Name a route and its colour follows.',
+    deps: ['class-variance-authority'],
+  },
+  sign: {
+    description: 'The sign band: white type on black under a thin white rule, with route bullets and an arrow beside the words.',
     deps: ['class-variance-authority'],
   },
 };

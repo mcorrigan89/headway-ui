@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 
 // The signage arrow: a heavy shaft and a broad head, in eight directions.
-// Decorative unless given a label.
+// It is as tall as the text around it (1em). Decorative unless given a label.
 
 type Direction = 'up' | 'up-right' | 'right' | 'down-right' | 'down' | 'down-left' | 'left' | 'up-left';
 
@@ -29,7 +29,7 @@ function Arrow({ direction = 'right', label, className, ...props }: ArrowProps) 
       data-direction={direction}
       viewBox="0 0 100 100"
       fill="currentColor"
-      className={cn('size-6 shrink-0', className)}
+      className={cn('h-[1em] w-[1em] shrink-0', className)}
       {...(label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': true })}
       {...props}
     >

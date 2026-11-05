@@ -2,7 +2,9 @@ import type { ReactNode } from 'react';
 
 import { Arrow, type Direction } from '@/components/ui/arrow';
 import { Button } from '@/components/ui/button';
+import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { RouteBullet } from '@/components/ui/route-bullet';
+import { Sign, SignContent, SignDescription, SignRoutes, SignTitle } from '@/components/ui/sign';
 
 // One demo per registry item, keyed by item name. Items without one show
 // their description only.
@@ -137,9 +139,81 @@ function ButtonDemo() {
   );
 }
 
+function SignDemo() {
+  return (
+    <div className="flex max-w-2xl flex-col gap-4">
+      <Sign size="lg">
+        <SignContent>
+          <SignTitle>Times Sq–42 St</SignTitle>
+        </SignContent>
+        <SignRoutes>
+          <RouteBullet route="N" size="lg" />
+          <RouteBullet route="Q" size="lg" />
+          <RouteBullet route="R" size="lg" />
+          <RouteBullet route="W" size="lg" />
+        </SignRoutes>
+      </Sign>
+      <Sign>
+        <Arrow direction="left" />
+        <SignContent>
+          <SignTitle>Downtown &amp; Brooklyn</SignTitle>
+          <SignDescription>Local and express trains</SignDescription>
+        </SignContent>
+        <SignRoutes>
+          <RouteBullet route="4" />
+          <RouteBullet route="5" />
+          <RouteBullet route="6" />
+        </SignRoutes>
+      </Sign>
+      <Sign size="sm">
+        <SignContent>
+          <SignTitle>Exit to W 43 St</SignTitle>
+        </SignContent>
+        <Arrow direction="up-right" />
+      </Sign>
+    </div>
+  );
+}
+
+function CardDemo() {
+  return (
+    <div className="grid max-w-3xl gap-6 md:grid-cols-2">
+      <Card>
+        <CardHeader>
+          <CardTitle>Weekend service</CardTitle>
+          <CardDescription>Sat 12:00 am to Mon 5:00 am</CardDescription>
+        </CardHeader>
+        <CardContent>Trains run local in both directions between 59 St–Columbus Circle and 145 St.</CardContent>
+        <CardFooter>
+          <Button size="sm">Details</Button>
+          <Button size="sm" variant="ghost">
+            Dismiss
+          </Button>
+        </CardFooter>
+      </Card>
+      <Card>
+        <CardHeader variant="sign">
+          <CardTitle className="text-xl">Uptown &amp; the Bronx</CardTitle>
+          <CardDescription>Platform 2</CardDescription>
+          <CardAction className="flex gap-1">
+            <RouteBullet route="2" />
+            <RouteBullet route="3" />
+          </CardAction>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-2">
+          <p>Next train in 3 min, then 9 min.</p>
+          <p className="text-muted-foreground">Elevator to the street is in service.</p>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
 export const DEMOS: Record<string, () => ReactNode> = {
   theme: ThemeDemo,
   arrow: ArrowDemo,
   button: ButtonDemo,
+  card: CardDemo,
+  sign: SignDemo,
   'route-bullet': RouteBulletDemo,
 };
