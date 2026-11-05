@@ -59,7 +59,12 @@ function Preview() {
                   <h2 className="text-2xl">{item.title}</h2>
                   <p className="mt-1 max-w-prose text-sm font-normal tracking-normal text-muted-foreground">{item.description}</p>
                 </div>
-                {Demo && <Demo />}
+                {Demo && (
+                  // a block, so a lone trigger button keeps its own width
+                  <div>
+                    <Demo />
+                  </div>
+                )}
               </section>
             );
           })}

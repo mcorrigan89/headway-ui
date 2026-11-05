@@ -62,6 +62,13 @@ export const PALETTE = {
   // red as text (form errors): the fill red is too dark to read on the ground
   error: '#ff6e61',
   ...LINES,
+  // chart series, in this order: route colours that read on a black panel
+  // (charts always sit in one). Teal is the T line's.
+  'chart-1': '#fccc0a',
+  'chart-2': '#00add0',
+  'chart-3': '#ee352e',
+  'chart-4': '#6cbe45',
+  'chart-5': '#b933ad',
   radius: '0rem',
 };
 
@@ -93,9 +100,10 @@ export const LIGHT = {
   error: '#c8102e',
 };
 
-// what on-sign puts back inside a black panel: the dark palette's text,
-// controls and ring. Card and popover are left alone so each mode keeps its
-// own panel colour.
+// what on-sign puts back inside a black panel: the dark palette's text and
+// controls. Card and popover are left alone so each mode keeps its own panel
+// colour. The yellow ring is set on what's inside the panel, not the panel:
+// a focusable panel (an input group) is ringed against the wall around it.
 const PANEL_KEYS = [
   'background',
   'foreground',
@@ -111,7 +119,6 @@ const PANEL_KEYS = [
   'accent-foreground',
   'border',
   'input',
-  'ring',
   'error',
 ];
 export const PANEL = Object.fromEntries(PANEL_KEYS.map((k) => [k, PALETTE[k]]));

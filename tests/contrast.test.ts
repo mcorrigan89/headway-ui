@@ -55,8 +55,12 @@ describe.each([
     expect(contrast(panel[fg], surface)).toBeGreaterThanOrEqual(4.5);
   });
 
+  it.each(['chart-1', 'chart-2', 'chart-3', 'chart-4', 'chart-5'])('%s reads on the panel', (series) => {
+    expect(contrast(mode[series], mode.card)).toBeGreaterThanOrEqual(3);
+  });
+
   it('keeps the focus ring visible on the panel', () => {
-    expect(contrast(panel.ring, mode.card)).toBeGreaterThanOrEqual(3);
-    expect(contrast(panel.ring, mode.sign)).toBeGreaterThanOrEqual(3);
+    expect(contrast(dark.ring, mode.card)).toBeGreaterThanOrEqual(3);
+    expect(contrast(dark.ring, mode.sign)).toBeGreaterThanOrEqual(3);
   });
 });

@@ -1,11 +1,24 @@
 import type { ReactNode } from 'react';
-import { CircleCheck, Construction, OctagonX, TriangleAlert, X } from 'lucide-react';
+import { CircleCheck, Construction, OctagonX, Search, TriangleAlert, X } from 'lucide-react';
 
 import { Alert, AlertAction, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Arrow, type Direction } from '@/components/ui/arrow';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText } from '@/components/ui/input-group';
+import { Popover, PopoverContent, PopoverDescription, PopoverHeader, PopoverTitle, PopoverTrigger } from '@/components/ui/popover';
+import { Separator } from '@/components/ui/separator';
 import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSet } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -477,6 +490,86 @@ function StripMapDemo() {
   );
 }
 
+function SeparatorDemo() {
+  return (
+    <div className="flex max-w-sm flex-col gap-3 text-sm">
+      <div>
+        <p className="font-bold">Times Sq–42 St</p>
+        <p className="text-muted-foreground">Manhattan</p>
+      </div>
+      <Separator />
+      <div className="flex h-5 items-center gap-3">
+        <span>Elevator</span>
+        <Separator orientation="vertical" />
+        <span>Escalator</span>
+        <Separator orientation="vertical" />
+        <span>Stairs</span>
+      </div>
+    </div>
+  );
+}
+
+function InputGroupDemo() {
+  return (
+    <div className="flex max-w-sm flex-col gap-3">
+      <InputGroup>
+        <InputGroupAddon>
+          <Search />
+        </InputGroupAddon>
+        <InputGroupInput placeholder="Search stations" aria-label="Search stations" />
+      </InputGroup>
+      <InputGroup>
+        <InputGroupAddon>
+          <InputGroupText>$</InputGroupText>
+        </InputGroupAddon>
+        <InputGroupInput defaultValue="34.00" aria-label="Amount" />
+        <InputGroupAddon align="inline-end">
+          <InputGroupButton>Add value</InputGroupButton>
+        </InputGroupAddon>
+      </InputGroup>
+    </div>
+  );
+}
+
+function PopoverDemo() {
+  return (
+    <Popover>
+      <PopoverTrigger render={<Button variant="outline" />}>Accessibility</PopoverTrigger>
+      <PopoverContent>
+        <PopoverHeader>
+          <PopoverTitle>Times Sq–42 St</PopoverTitle>
+          <PopoverDescription>Elevators to all platforms are in service.</PopoverDescription>
+        </PopoverHeader>
+        <Button size="sm" variant="outline">
+          Report an outage
+        </Button>
+      </PopoverContent>
+    </Popover>
+  );
+}
+
+function DialogDemo() {
+  return (
+    <Dialog>
+      <DialogTrigger render={<Button />}>Save trip</DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Save this trip</DialogTitle>
+          <DialogDescription>We will tell you about delays and planned work on these lines.</DialogDescription>
+        </DialogHeader>
+        <Field>
+          <FieldLabel htmlFor="trip-name">Name</FieldLabel>
+          <Input id="trip-name" defaultValue="Home to work" />
+        </Field>
+        <DialogFooter>
+          <DialogClose render={<Button variant="ghost" />}>Cancel</DialogClose>
+          <DialogClose render={<Button />}>Save</DialogClose>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 export const DEMOS: Record<string, () => ReactNode> = {
   theme: ThemeDemo,
   alert: AlertDemo,
@@ -484,7 +577,11 @@ export const DEMOS: Record<string, () => ReactNode> = {
   badge: BadgeDemo,
   button: ButtonDemo,
   card: CardDemo,
+  dialog: DialogDemo,
   field: FieldDemo,
+  'input-group': InputGroupDemo,
+  popover: PopoverDemo,
+  separator: SeparatorDemo,
   input: InputDemo,
   label: LabelDemo,
   sign: SignDemo,

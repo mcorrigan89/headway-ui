@@ -61,9 +61,11 @@ const theme = {
       'line-height': '1.15',
     },
     // a black panel that carries text: inside it, text, controls and the
-    // focus ring take the dark palette's colours in either mode. Cards,
+    // focus ring take the dark palette's colours in either mode. The ring is
+    // set on the panel's contents, so the panel's own ring (an input group)
+    // still reads against the wall around it. Cards,
     // alerts, tables and the tab bar use it.
-    '@utility on-sign': { ...vars(PANEL), color: 'var(--foreground)' },
+    '@utility on-sign': { ...vars(PANEL), color: 'var(--foreground)', '& *': { '--ring': PALETTE.ring } },
     // the thin white rule just inside the top edge of a sign. Padding makes
     // room so content never touches it.
     '@utility sign-rule': {
@@ -115,17 +117,29 @@ const UI = {
     deps: ['@base-ui/react', 'class-variance-authority'],
   },
   card: { description: 'A square panel with header, title, description, content and footer; the header can be a sign band.', deps: [] },
+  dialog: {
+    description: 'A modal on a black panel with the sign’s white rule along its top.',
+    deps: ['@base-ui/react', 'lucide-react'],
+    ui: ['button'],
+  },
   field: {
     description: 'Labels, controls, help text and errors composed into form fields; takes errors from any form library.',
     deps: ['class-variance-authority'],
     ui: ['label'],
   },
+  'input-group': {
+    description: 'An input with icons, units or buttons attached, in one black box.',
+    deps: ['@base-ui/react', 'class-variance-authority'],
+    ui: ['button'],
+  },
   input: { description: 'A square text box: a black well whose edge turns white on focus.', deps: ['@base-ui/react'] },
   label: { description: 'A bold form label.', deps: [] },
+  popover: { description: 'Content in a black panel, anchored to its trigger.', deps: ['@base-ui/react'] },
   'route-bullet': {
     description: 'A coloured circle with a route letter or number, or a diamond for express service. Name a route and its colour follows.',
     deps: ['class-variance-authority'],
   },
+  separator: { description: 'A hairline rule, across or down.', deps: ['@base-ui/react'] },
   sign: {
     description: 'The sign band: white type on black under a thin white rule, with route bullets and an arrow beside the words.',
     deps: ['class-variance-authority'],
