@@ -18,8 +18,16 @@ style are borrowed; no MTA marks are used.
   express diamond. `route="A"` picks the colour; `color="blue"` takes anything.
 - `arrow`: the signage arrow in eight directions.
 - `sign`: the black band with the white rule, with room for bullets and an arrow.
-- `button`, `badge`, `card`, `alert`, `tabs`, `input`, `label`, `field`, `table`.
 - `strip-map`: the line diagram from inside the train, as a stepper or timeline.
+- The standard shadcn set, restyled: accordion, alert, alert-dialog,
+  aspect-ratio, avatar, badge, breadcrumb, button, button-group, calendar,
+  card, carousel, chart, checkbox, collapsible, combobox, command,
+  context-menu, date-picker, dialog, drawer, dropdown-menu, empty, field,
+  hover-card, input, input-group, input-otp, item, kbd, label, menubar,
+  native-select, navigation-menu, pagination, popover, progress, radio-group,
+  resizable, scroll-area, select, separator, sheet, skeleton, slider, sonner
+  (toasts), spinner, switch, table, tabs, textarea, toggle, toggle-group and
+  tooltip.
 
 ## Using it
 

@@ -10,6 +10,8 @@ const at = (p: string) => fileURLToPath(new URL(p, import.meta.url));
 // consumer's project uses, so what you see is exactly what gets installed.
 export default defineConfig({
   base: process.env.BASE_PATH ?? '/',
+  // one page with every component on it; not worth splitting
+  build: { chunkSizeWarningLimit: 1600 },
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: [
