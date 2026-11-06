@@ -144,8 +144,8 @@ composition through the `render` prop.
 | 12  | `strip-map`               | The line diagram from inside the train: a coloured line with stops. Used as a stepper / progress / timeline, with past, current and upcoming states.                  |
 | 13  | `arrow`                   | The manual's directional arrows in 8 directions, as an SVG component                                                                                                  |
 
-Later candidates: select, checkbox, radio, switch, dialog, dropdown menu,
-tooltip, toast, breadcrumb, pagination, navigation menu.
+Since the first pass, the rest of the standard set has been added (see
+"Decisions made during the first pass").
 
 ## Repo structure (mirrors Phosphor)
 
@@ -231,6 +231,12 @@ Scripts: `dev`, `registry`, `build`, `check-types`, `lint`, `format`,
   and `color="blue"` (any content) are supported.
 - **Field:** ships without `FieldSeparator`, which would need a separator item.
 - **Preview:** `?item=<name>` shows one item on its own.
+- **Full component set (added after the first pass):** the 45 remaining
+  general-purpose components from Phosphor, ported with the same APIs and
+  restyled per the conventions in CLAUDE.md. Phosphor's chat and console
+  pieces are not included. One API change: progress tones are `default`,
+  `ok`, `warning`, `destructive`, `info`. Charts use `chart-1..5` (yellow,
+  T-line teal, red, lime, purple) and always sit on a black panel.
 - **Light mode (added after the first pass):** a white wall like station tile,
   with text in black sign panels. Cards, alerts, tables, inputs and the tab bar
   are black in both modes; the `on-sign` utility gives anything inside a black
