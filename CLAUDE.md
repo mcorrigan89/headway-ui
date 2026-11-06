@@ -32,6 +32,19 @@ pnpm verify       # install every item into a fresh app in .verify/ and build it
 - Components follow shadcn conventions on **Base UI** (`@base-ui/react`, not Radix): `data-slot` attributes, `cva` variants, `cn()`, composition via the `render` prop. Square corners (`rounded-none`) except bullets and dots; focus is `outline-3 outline-offset-2 outline-ring` (yellow).
 - **Preview** (`src/main.tsx`): one page rendering every item from `items.generated.json` with its demo from `DEMOS` in `src/demos.tsx`. Tests live in `tests/` (jsdom + Testing Library).
 
+## Styling conventions
+
+- **Square**: `rounded-none` everywhere (the radius token is 0, so `rounded-md` etc. are square too). Only route bullets, strip-map dots, radio dots, avatars and similar true circles use `rounded-full`.
+- **Type**: Helvetica-style sans only. Titles and labels are `font-bold` with `tracking-tight` on large sizes; body is regular. No uppercase/letter-spaced "display" styling, no monospace except code (`font-mono` in `kbd`).
+- **Focus**: `outline-none focus-visible:outline-3 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ring`. `outline-solid` is required: in Tailwind v4 `outline-none` sets the outline style to none. Inside menus and lists, highlighted items use `bg-accent text-accent-foreground` instead of a ring.
+- **Panels**: anything that floats or holds text in a box (popover, dialog, sheet, drawer, menus, tooltip, hover card, select popup, command list, toasts) is a black panel: `on-sign border border-border bg-popover text-popover-foreground`. Dialog-sized panels carry the sign's white rule (`before:absolute before:inset-x-0 before:top-1.5 before:h-0.5 before:bg-sign-rule` with extra top padding). Overlays behind modals are `bg-black/60`.
+- **Controls with a text box** (input, textarea, select trigger, input group, input OTP slots) are black boxes in both modes: `border-2 border-input bg-sign text-sign-foreground [color-scheme:dark]`, `hover:border-muted-foreground`, white border on focus (`focus-visible:border-sign-foreground` or `border-foreground` under `on-sign`), `aria-invalid:border-error`.
+- **Checked / on / selected** states are white-on-black panels: `bg-primary text-primary-foreground` (white in dark mode and in panels, black on the light wall).
+- **Colour** comes from tokens only: `foreground`, `muted-foreground`, `border`, `input`, `accent`, `primary`, `secondary`, `sign`, `ok` / `warning` / `destructive` / `info` (+ `-foreground`) for status fills, `error` for red text, `line-*` for route identity. Never route colours as text. Destructive menu items use `text-error`.
+- **No glow, no soft tints**: no coloured shadows, gradients or translucent colour washes. Disabled is `opacity-40`.
+- **Motion**: the `tw-animate-css` enter/exit classes shadcn uses are fine; keep durations short (100–200ms).
+- Components must read correctly on both the charcoal ground (dark) and the white wall (light); check both with the preview's mode switch.
+
 ## Adding a component
 
 1. Put the source in `registry/headway/ui/`.
