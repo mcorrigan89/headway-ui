@@ -6,7 +6,11 @@ import items from '@/docs/items.generated.json';
 import './styles.css';
 
 // A plain preview: every registry item in order, with its demo. Not a docs
-// site; just enough to look at things while building them.
+// site; just enough to look at things while building them. ?item=<name>
+// shows one item on its own.
+const only = new URLSearchParams(location.search).get('item');
+const shown = only ? items.filter((item) => item.name === only) : items;
+
 function Preview() {
   return (
     <div className="min-h-screen">
@@ -23,7 +27,7 @@ function Preview() {
           ))}
         </nav>
         <main className="flex min-w-0 flex-1 flex-col gap-16">
-          {items.map((item) => {
+          {shown.map((item) => {
             const Demo = DEMOS[item.name];
             return (
               <section key={item.name} id={item.name} className="flex scroll-mt-6 flex-col gap-4">
