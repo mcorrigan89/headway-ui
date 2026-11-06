@@ -141,7 +141,21 @@ const UI = {
     deps: ['@base-ui/react', 'class-variance-authority'],
     ui: ['separator'],
   },
+  calendar: {
+    description: 'A month grid on a black panel: square days, today bold and underlined, the chosen day lit, a range on grey.',
+    deps: ['react-day-picker', 'lucide-react'],
+    ui: ['button'],
+  },
   card: { description: 'A square panel with header, title, description, content and footer; the header can be a sign band.', deps: [] },
+  carousel: {
+    description: 'A strip of slides you swipe, drag or step through with square buttons carrying the signage arrow.',
+    deps: ['embla-carousel-react'],
+    ui: ['button', 'arrow'],
+  },
+  chart: {
+    description: 'Recharts on a black panel, in five route colours chosen to read on black, with a white crosshair and a black tooltip.',
+    deps: ['recharts'],
+  },
   checkbox: {
     description: 'A square box with a heavy edge that fills solid, with the tick knocked out, when checked.',
     deps: ['@base-ui/react', 'lucide-react'],
@@ -160,6 +174,11 @@ const UI = {
   'context-menu': {
     description: 'The dropdown menu’s black panel, opened by right-click or long-press over an area.',
     deps: ['@base-ui/react', 'lucide-react'],
+  },
+  'date-picker': {
+    description: 'One date, picked from a calendar in a black popover, behind a black-box trigger like a text input.',
+    deps: ['lucide-react'],
+    ui: ['calendar', 'popover'],
   },
   dialog: {
     description: 'A modal on a black panel with the sign’s white rule along its top.',
@@ -223,14 +242,20 @@ const UI = {
     ui: ['button'],
   },
   popover: { description: 'Content in a black panel, anchored to its trigger.', deps: ['@base-ui/react'] },
+  progress: {
+    description: 'A thick square bar for work under way, in the primary or a status colour; it pulses when the length is unknown.',
+    deps: ['@base-ui/react', 'class-variance-authority'],
+  },
   'radio-group': {
     description: 'A set of round options, one chosen at a time, the chosen one marked with a solid dot.',
     deps: ['@base-ui/react'],
   },
+  resizable: { description: 'Panels split by dividers you can drag, with an optional square grip.', deps: ['react-resizable-panels'] },
   'route-bullet': {
     description: 'A coloured circle with a route letter or number, or a diamond for express service. Name a route and its colour follows.',
     deps: ['class-variance-authority'],
   },
+  'scroll-area': { description: 'A box that scrolls with a thin square scrollbar.', deps: ['@base-ui/react'] },
   select: {
     description: 'A black box that opens a list of options in a black panel, the chosen one ticked.',
     deps: ['@base-ui/react', 'lucide-react'],
@@ -249,6 +274,10 @@ const UI = {
   slider: {
     description: 'A flat track with the chosen range drawn solid and square thumbs; one value or a range.',
     deps: ['@base-ui/react'],
+  },
+  sonner: {
+    description: 'Toasts as black panels with a status rail and a coloured icon tile, like the alert.',
+    deps: ['sonner', 'lucide-react'],
   },
   spinner: { description: 'A ring of square ticks that steps round like a station clock.', deps: [] },
   'strip-map': {
