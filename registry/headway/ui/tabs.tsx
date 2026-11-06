@@ -43,7 +43,7 @@ function TabsTrigger({ className, ...props }: TabsPrimitive.Tab.Props) {
     <TabsPrimitive.Tab
       data-slot="tabs-trigger"
       className={cn(
-        "relative inline-flex h-full items-center justify-center gap-2 rounded-none px-3 text-sm font-bold whitespace-nowrap transition-colors outline-none group-data-vertical/tabs:justify-start group-data-vertical/tabs:py-2 focus-visible:outline-3 focus-visible:-outline-offset-3 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-40 aria-disabled:pointer-events-none aria-disabled:opacity-40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative inline-flex h-full items-center justify-center gap-2 rounded-none px-3 text-sm font-bold whitespace-nowrap transition-colors outline-none group-data-vertical/tabs:justify-start group-data-vertical/tabs:py-2 focus-visible:outline-3 focus-visible:outline-solid focus-visible:-outline-offset-3 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-40 aria-disabled:pointer-events-none aria-disabled:opacity-40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         // on the band: dim until chosen, then a white panel
         'group-data-[variant=default]/tabs-list:text-sign-foreground/70 group-data-[variant=default]/tabs-list:hover:text-sign-foreground group-data-[variant=default]/tabs-list:data-active:bg-primary group-data-[variant=default]/tabs-list:data-active:text-primary-foreground',
         // line: a 4px bar under (or beside) the chosen tab
