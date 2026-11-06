@@ -4,6 +4,7 @@ import { CircleCheck, Construction, OctagonX, Search, TriangleAlert, X } from 'l
 import { Alert, AlertAction, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Arrow, type Direction } from '@/components/ui/arrow';
 import { DISPLAY_DEMOS } from '@/docs/demos/display';
+import { FORMS_DEMOS } from '@/docs/demos/forms';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -573,6 +574,7 @@ function DialogDemo() {
 
 export const DEMOS: Record<string, () => ReactNode> = {
   ...DISPLAY_DEMOS,
+  ...FORMS_DEMOS,
   theme: ThemeDemo,
   alert: AlertDemo,
   arrow: ArrowDemo,
