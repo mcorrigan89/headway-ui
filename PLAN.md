@@ -7,7 +7,8 @@ as [Phosphor](../phosphor): as a **shadcn registry**. People install the source
 into their own project with `npx shadcn add @<name>/<item>`, and the copied code
 is theirs to change.
 
-Working name: **TBD** (see open questions). `<name>` below stands for it.
+Working name: **Headway** (registry namespace `@headway`), chosen to get
+started; see open questions. `<name>` below stands for it.
 
 ## Scope
 
@@ -205,13 +206,35 @@ Scripts: `dev`, `registry`, `build`, `check-types`, `lint`, `format`,
 - **Fonts must be redistributable.** No Helvetica or Akzidenz-Grotesk files
   in the package.
 
+## Decisions made during the first pass
+
+- **Name:** working name Headway. Renaming means updating the package name,
+  `registry/headway/`, the aliases and the `@headway` namespace.
+- **Type:** TeX Gyre Heros isn't on npm, and a shadcn registry can't ship font
+  files. The stack is `'Helvetica Neue', Helvetica, 'Inter Variable', Arial`:
+  real Helvetica where the system has it (macOS, iOS), and Inter, installed
+  with the theme, everywhere else.
+- **Primary button:** white with black type, not white on black. A black
+  button barely stands out on the dark ground; the black band is the
+  `secondary` variant.
+- **Line-colour button variant:** left out. Most line colours can't carry
+  white text at AA.
+- **Bullet type colour:** white where it reaches 3:1 on the line colour,
+  near-black on orange, lime, grey and yellow. The MTA uses white on orange,
+  lime and grey; we chose legibility.
+- **Status colours:** `ok` and `destructive` are deepened from the line green
+  and red (`#007a33`, `#d11a1a`) so white text on them passes AA. A separate
+  `error` token (`#ff6e61`) is used for red text on the dark ground.
+- **Alert:** the status colour is on a filled icon tile, not a tinted icon,
+  because the blue is too dark to read as an icon on the ground.
+- **Route bullets:** both `route="A"` (picks the colour, labelled "A train")
+  and `color="blue"` (any content) are supported.
+- **Field:** ships without `FieldSeparator`, which would need a separator item.
+- **Preview:** `?item=<name>` shows one item on its own.
+
 ## Open questions
 
-1. **Name.** It sets the registry namespace (`@<name>/button`) and the folder
-   names.
+1. **Name.** Keep Headway, or rename?
 2. **Light mode now or later?** The plan says later, with tokens ready for it.
-3. **Route bullets:** should `line="A"` map to real NYC routes, or should we
-   only offer colour names (`blue`, `orange`, …) so the library isn't tied to
-   NYC route letters?
-4. **Hosting:** GitHub Pages like Phosphor when we get there, or somewhere
+3. **Hosting:** GitHub Pages like Phosphor when we get there, or somewhere
    else?
