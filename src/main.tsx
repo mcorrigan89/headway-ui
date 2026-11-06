@@ -9,9 +9,9 @@ import './styles.css';
 
 // A plain preview: every registry item in order, with its demo. Not a docs
 // site; just enough to look at things while building them. ?item=<name>
-// shows one item on its own.
+// shows one item on its own (or a comma-separated few).
 const only = new URLSearchParams(location.search).get('item');
-const shown = only ? items.filter((item) => item.name === only) : items;
+const shown = only ? items.filter((item) => only.split(',').includes(item.name)) : items;
 
 const MODES: { mode: ColorMode; label: string }[] = [
   { mode: 'dark', label: 'Dark' },
