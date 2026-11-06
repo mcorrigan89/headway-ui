@@ -31,6 +31,11 @@ import { Sign, SignContent, SignDescription, SignRoutes, SignTitle } from '@/com
 import { StripMap } from '@/components/ui/strip-map';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { CONTENT_DEMOS } from '@/docs/demos/content';
+import { FEEDBACK_DEMOS } from '@/docs/demos/feedback';
+import { INSTRUMENTS_DEMOS } from '@/docs/demos/instruments';
+import { INPUTS_DEMOS } from '@/docs/demos/inputs';
+import { BLOCKS_DEMOS } from '@/docs/demos/blocks';
 
 // One demo per registry item, keyed by item name. Items without one show
 // their description only.
@@ -575,6 +580,11 @@ function DialogDemo() {
 }
 
 export const DEMOS: Record<string, () => ReactNode> = {
+  ...BLOCKS_DEMOS,
+  ...INPUTS_DEMOS,
+  ...INSTRUMENTS_DEMOS,
+  ...FEEDBACK_DEMOS,
+  ...CONTENT_DEMOS,
   ...DATA_DEMOS,
   ...DISPLAY_DEMOS,
   ...FORMS_DEMOS,
