@@ -28,7 +28,7 @@ const Toaster = (props: ToasterProps) => (
           'on-sign group flex w-(--width) items-start gap-3 rounded-none border border-border border-l-4! border-l-primary! bg-popover px-4 py-3 text-sm leading-snug text-popover-foreground shadow-lg data-[type=error]:border-l-destructive! data-[type=info]:border-l-info! data-[type=loading]:border-l-muted-foreground! data-[type=success]:border-l-ok! data-[type=warning]:border-l-warning!',
         title: 'text-base leading-tight font-bold tracking-tight text-foreground',
         description: 'mt-0.5 text-sm text-muted-foreground',
-        icon: 'm-0! size-6! shrink-0 justify-center! bg-primary text-primary-foreground',
+        icon: 'm-0! flex! size-6! shrink-0 items-center! justify-center! bg-primary text-primary-foreground',
         content: 'flex min-w-0 flex-1 flex-col',
         success: '[&_[data-icon]]:bg-ok [&_[data-icon]]:text-ok-foreground',
         error: '[&_[data-icon]]:bg-destructive [&_[data-icon]]:text-destructive-foreground',
