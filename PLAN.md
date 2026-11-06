@@ -231,10 +231,15 @@ Scripts: `dev`, `registry`, `build`, `check-types`, `lint`, `format`,
   and `color="blue"` (any content) are supported.
 - **Field:** ships without `FieldSeparator`, which would need a separator item.
 - **Preview:** `?item=<name>` shows one item on its own.
+- **Light mode (added after the first pass):** a white wall like station tile,
+  with text in black sign panels. Cards, alerts, tables, inputs and the tab bar
+  are black in both modes; the `on-sign` utility gives anything inside a black
+  panel the dark palette's text, control and ring colours. The focus ring is
+  the A/C/E blue on the white wall and yellow inside panels. The primary button
+  is black on the wall; `secondary` is light grey there and black in dark mode.
 
 ## Open questions
 
 1. **Name.** Keep Headway, or rename?
-2. **Light mode now or later?** The plan says later, with tokens ready for it.
-3. **Hosting:** GitHub Pages like Phosphor when we get there, or somewhere
+2. **Hosting:** GitHub Pages like Phosphor when we get there, or somewhere
    else?

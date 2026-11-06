@@ -132,9 +132,15 @@ export default defineConfig({ plugins: [react(), tailwindcss()], resolve: { alia
 
   // the theme landed: tokens mapped to utilities, and the custom utilities exist
   const css = readFileSync(join(APP, 'src/index.css'), 'utf8');
-  const missing = ['--color-primary: var(--primary)', '--color-line-blue', '--color-sign', '@utility sign', '@utility sign-rule'].filter(
-    (s) => !css.includes(s),
-  );
+  const missing = [
+    '--color-primary: var(--primary)',
+    '--color-line-blue',
+    '--color-sign',
+    '@utility sign',
+    '@utility sign-rule',
+    '@utility on-sign',
+    ':root[data-mode="light"]',
+  ].filter((s) => !css.includes(s));
   if (missing.length) throw new Error(`index.css is missing: ${missing.join(', ')}`);
   console.log(`\n✓ verify: ${items.length} items installed, type-checked and built in ${APP}`);
 } finally {

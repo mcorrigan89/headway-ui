@@ -24,7 +24,7 @@ const tabsListVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-sign p-1 group-data-horizontal/tabs:h-11',
+        default: 'on-sign bg-sign p-1 group-data-horizontal/tabs:h-11',
         line: 'gap-4 border-border text-muted-foreground group-data-horizontal/tabs:h-10 group-data-horizontal/tabs:border-b group-data-vertical/tabs:gap-1 group-data-vertical/tabs:border-l',
       },
     },

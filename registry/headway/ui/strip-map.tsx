@@ -32,7 +32,8 @@ type StopState = 'passed' | 'current' | 'ahead';
 const DOT: Record<StopState, string> = {
   passed: 'size-3 bg-sign',
   current: 'size-6 border-4 border-(--strip) bg-white',
-  ahead: 'size-3.5 bg-white',
+  // ringed in the line colour, so the dot shows on a white wall too
+  ahead: 'size-4 border-[3px] border-(--strip) bg-white',
 };
 
 const LABEL: Record<StopState, string> = {
