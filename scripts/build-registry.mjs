@@ -219,7 +219,6 @@ const UI = {
   item: {
     description: 'A row in a list: media, a bold title and description, and actions; it can be a link, or sit in a black panel.',
     deps: ['@base-ui/react', 'class-variance-authority'],
-    ui: ['separator'],
   },
   kbd: { description: 'A keyboard key as a small square in monospace type, alone or grouped into a shortcut.', deps: [] },
   label: { description: 'A bold form label.', deps: [] },

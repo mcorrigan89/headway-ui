@@ -11,8 +11,21 @@ import { cn } from '@/lib/utils';
 // share their edges; the focused one turns white-edged and ringed. `value` is
 // a string.
 
-function InputOTP({ className, ...props }: OTPField.Root.Props) {
-  return <OTPField.Root data-slot="input-otp" className={cn('flex items-center gap-2 data-disabled:opacity-40', className)} {...props} />;
+// Base UI names each slot input from a <Field> label; outside one, the root's
+// aria-labelledby is handed down so every slot carries the field's name
+const LabelledByContext = React.createContext<string | undefined>(undefined);
+
+function InputOTP({ className, 'aria-labelledby': labelledBy, ...props }: OTPField.Root.Props) {
+  return (
+    <LabelledByContext.Provider value={labelledBy}>
+      <OTPField.Root
+        data-slot="input-otp"
+        aria-labelledby={labelledBy}
+        className={cn('flex items-center gap-2 data-disabled:opacity-40', className)}
+        {...props}
+      />
+    </LabelledByContext.Provider>
+  );
 }
 
 function InputOTPGroup({ className, ...props }: React.ComponentProps<'div'>) {
@@ -20,8 +33,10 @@ function InputOTPGroup({ className, ...props }: React.ComponentProps<'div'>) {
 }
 
 function InputOTPSlot({ className, ...props }: OTPField.Input.Props) {
+  const labelledBy = React.useContext(LabelledByContext);
   return (
     <OTPField.Input
+      aria-labelledby={labelledBy}
       data-slot="input-otp-slot"
       className={cn(
         'relative m-0 size-11 rounded-none border-2 border-input bg-sign p-0 text-center text-xl font-bold text-sign-foreground tabular-nums caret-sign-foreground [color-scheme:dark] transition-colors outline-none not-first:-ml-0.5 hover:z-10 hover:border-muted-foreground focus:z-20 focus:border-sign-foreground focus:outline-3 focus:outline-solid focus:outline-offset-2 focus:outline-ring disabled:cursor-not-allowed aria-invalid:border-error',

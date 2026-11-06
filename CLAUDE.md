@@ -20,7 +20,7 @@ pnpm build        # registry + type-check + vite build → dist/
 pnpm verify       # install every item into a fresh app in .verify/ and build it
 ```
 
-`check-types`, `lint`, `format:check`, `test` and `verify` are the checks. Run `verify` after changing any item's dependencies, imports or the theme. Commits are made with the Graphite CLI (`gt create`), one branch per piece of work, stacked on `main`.
+`check-types`, `lint`, `format:check`, `test` and `verify` are the checks. `tests/a11y.test.tsx` runs axe's WCAG 2.2 A/AA rules over every demo (contrast is left to `tests/contrast.test.ts`, since jsdom has no layout); a new demo is covered automatically. For a full audit, contrast and open popups included, load `/node_modules/axe-core/axe.min.js` into the running preview and run `axe.run()` in dark and light. Run `verify` after changing any item's dependencies, imports or the theme. Commits are made with the Graphite CLI (`gt create`), one branch per piece of work, stacked on `main`.
 
 ## Architecture
 
@@ -41,6 +41,7 @@ pnpm verify       # install every item into a fresh app in .verify/ and build it
 - **Controls with a text box** (input, textarea, select trigger, input group, input OTP slots) are black boxes in both modes: `border-2 border-input bg-sign text-sign-foreground [color-scheme:dark]`, `hover:border-muted-foreground`, white border on focus (`focus-visible:border-sign-foreground` or `border-foreground` under `on-sign`), `aria-invalid:border-error`.
 - **Checked / on / selected** states are white-on-black panels: `bg-primary text-primary-foreground` (white in dark mode and in panels, black on the light wall).
 - **Colour** comes from tokens only: `foreground`, `muted-foreground`, `border`, `input`, `accent`, `primary`, `secondary`, `sign`, `ok` / `warning` / `destructive` / `info` (+ `-foreground`) for status fills, `error` for red text, `line-*` for route identity. Never route colours as text. Destructive menu items use `text-error`.
+- **Accessible names**: an `aria-label` must contain the visible text (WCAG 2.5.3): a date picker labelled "Travel date" is named "Travel date: Pick a date". Icon-only buttons need an `aria-label`. Don't put `role="separator"` inside a list or listbox: draw the rule with an `aria-hidden` div.
 - **No glow, no soft tints**: no coloured shadows, gradients or translucent colour washes. Disabled is `opacity-40`.
 - **Motion**: the `tw-animate-css` enter/exit classes shadcn uses are fine; keep durations short (100–200ms).
 - Components must read correctly on both the charcoal ground (dark) and the white wall (light); check both with the preview's mode switch.
