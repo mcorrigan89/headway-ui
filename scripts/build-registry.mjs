@@ -75,6 +75,10 @@ const utils = {
 // name → { description, deps (npm), ui (other registry items it imports) }
 const UI = {
   arrow: { description: 'The signage arrow, in eight directions.', deps: [] },
+  button: {
+    description: 'Square buttons: a white primary, a black sign band, outline, ghost, destructive and link.',
+    deps: ['@base-ui/react', 'class-variance-authority'],
+  },
   'route-bullet': {
     description: 'A coloured circle with a route letter or number, or a diamond for express service. Name a route and its colour follows.',
     deps: ['class-variance-authority'],
