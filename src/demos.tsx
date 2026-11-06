@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RouteBullet } from '@/components/ui/route-bullet';
 import { Sign, SignContent, SignDescription, SignRoutes, SignTitle } from '@/components/ui/sign';
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 // One demo per registry item, keyed by item name. Items without one show
@@ -385,6 +386,50 @@ function FieldDemo() {
   );
 }
 
+const DEPARTURES = [
+  { route: 'Q', to: 'Coney Island–Stillwell Av', track: 'Downtown', min: 2, status: 'ok' },
+  { route: 'N', to: 'Coney Island–Stillwell Av', track: 'Downtown', min: 5, status: 'warning' },
+  { route: 'R', to: 'Bay Ridge–95 St', track: 'Downtown', min: 7, status: 'ok' },
+  { route: 'W', to: 'Whitehall St–South Ferry', track: 'Downtown', min: 11, status: 'ok' },
+] as const;
+
+function TableDemo() {
+  return (
+    <div className="max-w-2xl">
+      <Table>
+        <TableCaption>Departures from Times Sq–42 St. Times are estimates.</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-14">Route</TableHead>
+            <TableHead>To</TableHead>
+            <TableHead>Platform</TableHead>
+            <TableHead className="text-right">Min</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {DEPARTURES.map((d) => (
+            <TableRow key={d.route}>
+              <TableCell>
+                <RouteBullet route={d.route} size="sm" />
+              </TableCell>
+              <TableCell className="font-bold">{d.to}</TableCell>
+              <TableCell>
+                {d.track}
+                {d.status === 'warning' && (
+                  <Badge variant="warning" className="ml-2">
+                    Delays
+                  </Badge>
+                )}
+              </TableCell>
+              <TableCell className="text-right text-base font-bold">{d.min}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  );
+}
+
 export const DEMOS: Record<string, () => ReactNode> = {
   theme: ThemeDemo,
   alert: AlertDemo,
@@ -396,6 +441,7 @@ export const DEMOS: Record<string, () => ReactNode> = {
   input: InputDemo,
   label: LabelDemo,
   sign: SignDemo,
+  table: TableDemo,
   tabs: TabsDemo,
   'route-bullet': RouteBulletDemo,
 };

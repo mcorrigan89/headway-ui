@@ -100,6 +100,7 @@ const UI = {
     description: 'The sign band: white type on black under a thin white rule, with route bullets and an arrow beside the words.',
     deps: ['class-variance-authority'],
   },
+  table: { description: 'A plain, dense table with a black header band and tabular numbers.', deps: [] },
   tabs: {
     description: 'Tabs on a black band with the chosen one lit white, or a quieter line under the chosen tab.',
     deps: ['@base-ui/react', 'class-variance-authority'],
