@@ -93,6 +93,10 @@ const UI = {
     description: 'The sign band: white type on black under a thin white rule, with route bullets and an arrow beside the words.',
     deps: ['class-variance-authority'],
   },
+  tabs: {
+    description: 'Tabs on a black band with the chosen one lit white, or a quieter line under the chosen tab.',
+    deps: ['@base-ui/react', 'class-variance-authority'],
+  },
 };
 const uiItems = Object.entries(UI).map(([name, spec]) => ({
   name,
