@@ -113,6 +113,11 @@ const UI = {
     description: 'A service-status notice: good service, delays, planned work or suspended, with an icon on a tile of its colour.',
     deps: ['class-variance-authority'],
   },
+  'alert-dialog': {
+    description: 'A confirmation that has to be answered, on a black panel with the sign’s white rule along its top.',
+    deps: ['@base-ui/react'],
+    ui: ['button'],
+  },
   arrow: { description: 'The signage arrow, in eight directions.', deps: [] },
   'aspect-ratio': { description: 'Holds its content to a fixed shape, such as 16:9, whatever the width.', deps: [] },
   avatar: {
@@ -142,10 +147,32 @@ const UI = {
     deps: ['@base-ui/react', 'lucide-react'],
   },
   collapsible: { description: 'An unstyled section that shows and hides behind a trigger.', deps: ['@base-ui/react'] },
+  combobox: {
+    description: 'A select you can type into to filter: a black text box over a black panel of matches, with chips for several values.',
+    deps: ['@base-ui/react', 'lucide-react'],
+    ui: ['button', 'input-group'],
+  },
+  command: {
+    description: 'A searchable list of commands in a black panel, inline or as a ⌘K palette in a dialog.',
+    deps: ['cmdk', 'lucide-react'],
+    ui: ['dialog', 'input-group'],
+  },
+  'context-menu': {
+    description: 'The dropdown menu’s black panel, opened by right-click or long-press over an area.',
+    deps: ['@base-ui/react', 'lucide-react'],
+  },
   dialog: {
     description: 'A modal on a black panel with the sign’s white rule along its top.',
     deps: ['@base-ui/react', 'lucide-react'],
     ui: ['button'],
+  },
+  drawer: {
+    description: 'A black panel that slides in from an edge and can be swiped away: the bottom sheet on phones.',
+    deps: ['@base-ui/react'],
+  },
+  'dropdown-menu': {
+    description: 'A menu in a black panel under its trigger: a grey band on the highlighted item, white ticks, red destructive items.',
+    deps: ['@base-ui/react', 'lucide-react'],
   },
   empty: {
     description: 'Nothing here yet: a dashed frame with an icon on a white tile, a bold title, a line of explanation and what to do next.',
@@ -155,6 +182,10 @@ const UI = {
     description: 'Labels, controls, help text and errors composed into form fields; takes errors from any form library.',
     deps: ['class-variance-authority'],
     ui: ['label'],
+  },
+  'hover-card': {
+    description: 'A preview in a black panel on hover; a shortcut, never the only way to the information.',
+    deps: ['@base-ui/react'],
   },
   input: { description: 'A square text box: a black well whose edge turns white on focus.', deps: ['@base-ui/react'] },
   'input-group': {
@@ -173,6 +204,11 @@ const UI = {
   },
   kbd: { description: 'A keyboard key as a small square in monospace type, alone or grouped into a shortcut.', deps: [] },
   label: { description: 'A bold form label.', deps: [] },
+  menubar: {
+    description: 'A strip of menus on a black sign band; the open menu’s name is lit.',
+    deps: ['@base-ui/react'],
+    ui: ['dropdown-menu'],
+  },
   'native-select': {
     description: 'The browser’s own select in a black box, for long lists, phones and forms that work without JavaScript.',
     deps: ['lucide-react'],
@@ -200,6 +236,11 @@ const UI = {
     deps: ['@base-ui/react', 'lucide-react'],
   },
   separator: { description: 'A hairline rule, across or down.', deps: ['@base-ui/react'] },
+  sheet: {
+    description: 'A full-height black panel that slides in from an edge, with the sign’s white rule along its top.',
+    deps: ['@base-ui/react', 'lucide-react'],
+    ui: ['button'],
+  },
   sign: {
     description: 'The sign band: white type on black under a thin white rule, with route bullets and an arrow beside the words.',
     deps: ['class-variance-authority'],
@@ -234,6 +275,10 @@ const UI = {
     description: 'A row of toggles, one or several pressed, spaced apart or butted into one strip.',
     deps: ['@base-ui/react', 'class-variance-authority'],
     ui: ['toggle'],
+  },
+  tooltip: {
+    description: 'A short label in a small black panel on hover or focus, for icon buttons and anything whose name isn’t printed.',
+    deps: ['@base-ui/react'],
   },
 };
 const uiItems = Object.entries(UI).map(([name, spec]) => ({
