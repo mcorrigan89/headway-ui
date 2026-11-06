@@ -49,14 +49,15 @@ function Meter({
         aria-valuenow={filled}
         aria-valuetext={`${filled} of ${total}`}
         aria-label={label}
-        className="flex h-5 gap-1"
+        // many segments shrink to fit the width, with a tighter gap
+        className={cn('flex max-w-full', 'h-5', segments > 24 ? 'gap-0.5' : 'gap-1')}
       >
         {Array.from({ length: segments }, (_, i) => (
           <span
             key={i}
             data-slot="meter-segment"
             data-filled={i < filled ? '' : undefined}
-            className={cn('h-full w-3 shrink-0', i < filled ? FILL[tone] : 'bg-border')}
+            className={cn('h-full w-3 min-w-0.5 shrink', i < filled ? FILL[tone] : 'bg-border')}
           />
         ))}
       </div>

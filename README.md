@@ -43,6 +43,10 @@ style are borrowed; no MTA marks are used.
   sidebar), data-table (sort, filter, page, select, reorder), user-menu and
   week-calendar.
 
+`?example=app` (linked from the preview's header) is a sample operations
+console built from the registry: service status for every line, a line's strip
+map and log, service alerts with a new-alert form, and the week's planned work.
+
 The registry and the preview are grouped into categories (wayfinding, actions,
 forms, navigation, overlays, feedback, display, data, layout, blocks).
 
