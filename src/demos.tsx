@@ -6,6 +6,9 @@ import { Arrow, type Direction } from '@/components/ui/arrow';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSet } from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { RouteBullet } from '@/components/ui/route-bullet';
 import { Sign, SignContent, SignDescription, SignRoutes, SignTitle } from '@/components/ui/sign';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -327,6 +330,61 @@ function TabsDemo() {
   );
 }
 
+function InputDemo() {
+  return (
+    <div className="flex max-w-sm flex-col gap-3">
+      <Input placeholder="Station, address or place" aria-label="From" />
+      <Input defaultValue="Union Sq–14 St" aria-label="To" />
+      <Input disabled placeholder="Disabled" aria-label="Disabled" />
+    </div>
+  );
+}
+
+function LabelDemo() {
+  return (
+    <div className="flex max-w-sm flex-col gap-2">
+      <Label htmlFor="label-demo">Starting station</Label>
+      <Input id="label-demo" placeholder="Times Sq–42 St" />
+    </div>
+  );
+}
+
+function FieldDemo() {
+  return (
+    <form className="max-w-md" onSubmit={(e) => e.preventDefault()}>
+      <FieldSet>
+        <FieldLegend>Plan a trip</FieldLegend>
+        <FieldDescription>We will find the fastest route, with transfers.</FieldDescription>
+        <FieldGroup>
+          <Field>
+            <FieldLabel htmlFor="trip-from">From</FieldLabel>
+            <Input id="trip-from" placeholder="Station, address or place" />
+          </Field>
+          <Field data-invalid>
+            <FieldLabel htmlFor="trip-to">To</FieldLabel>
+            <Input id="trip-to" defaultValue="Coney Island" aria-invalid aria-describedby="trip-to-error" />
+            <FieldError id="trip-to-error" errors={['Choose a station from the list.']} />
+          </Field>
+          <Field>
+            <FieldLabel htmlFor="trip-when">Leave at</FieldLabel>
+            <Input id="trip-when" type="time" defaultValue="08:30" />
+            <FieldDescription>Leave blank to go now.</FieldDescription>
+          </Field>
+          <Field orientation="horizontal">
+            <Button type="submit">
+              Find routes
+              <Arrow data-icon="inline-end" />
+            </Button>
+            <Button type="reset" variant="ghost">
+              Clear
+            </Button>
+          </Field>
+        </FieldGroup>
+      </FieldSet>
+    </form>
+  );
+}
+
 export const DEMOS: Record<string, () => ReactNode> = {
   theme: ThemeDemo,
   alert: AlertDemo,
@@ -334,6 +392,9 @@ export const DEMOS: Record<string, () => ReactNode> = {
   badge: BadgeDemo,
   button: ButtonDemo,
   card: CardDemo,
+  field: FieldDemo,
+  input: InputDemo,
+  label: LabelDemo,
   sign: SignDemo,
   tabs: TabsDemo,
   'route-bullet': RouteBulletDemo,
