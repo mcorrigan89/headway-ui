@@ -73,7 +73,13 @@ const utils = {
 
 // ── base components ────────────────────────────────────────────────────────
 // name → { description, deps (npm), ui (other registry items it imports) }
-const UI = {};
+const UI = {
+  arrow: { description: 'The signage arrow, in eight directions.', deps: [] },
+  'route-bullet': {
+    description: 'A coloured circle with a route letter or number, or a diamond for express service. Name a route and its colour follows.',
+    deps: ['class-variance-authority'],
+  },
+};
 const uiItems = Object.entries(UI).map(([name, spec]) => ({
   name,
   type: 'registry:ui',
